@@ -11,10 +11,11 @@
 window.onload = function () {
     <c:if test="${loginRequired}">
         alert("로그인 해주세요.");
-        history.back(); // 또는 location.href = '/login';
+        history.back();
     </c:if>
 }
 </script>
+<script type="text/javascript" src="/resources/js/chargecheck.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="<c:url value='/resources/css/chargecheck.css' />">
@@ -116,32 +117,32 @@ window.onload = function () {
 		<td class="l_table">
 		전기요금계
 		</td>
-		<td class="r_table">
-		sumCharge = basic+useCharge
+		<td class="r_table" id="sumCharge">
+		
 		</td>
 	</tr>
 	<tr>
 		<td class="l_table">
 		&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp기본요금
 		</td>
-		<td class="r_table">
-		basic
+		<td class="r_table" id="basic">
+		
 		</td>
 	</tr>
 	<tr>
 		<td class="l_table">
 		&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp전력량 요금
 		</td>
-		<td class="r_table">
-		useCharge
+		<td class="r_table" id="useCharge">
+		
 		</td>
 	</tr>
 	<tr>
 		<td class="l_table">
 		부가 가치세
 		</td>
-		<td class="r_table">
-		addedtax = sumCharge/10
+		<td class="r_table" id="addedTax">
+		
 		</td>
 	</tr>
 	<tr>
@@ -156,8 +157,8 @@ window.onload = function () {
 		<td class="last_l_table">
 		청구금액
 		</td>
-		<td class="last_r_table">
-		totalCharge = sumCharge+addedtax+360
+		<td class="last_r_table" id="totalCharge">
+		
 		</td>
 	</tr>
 	<tr>
@@ -167,6 +168,43 @@ window.onload = function () {
 	</tr>
 </table>
 </div>
-<script type="text/javascript" src="/resources/js/chargecheck.js"></script>
+<script>
+$(document).ready(function(){
+  var use;
+var basic;
+var useCharge;
+
+
+use=${user.month25_6}
+
+if (use<=200){
+basic = 730;
+useCharge = use*97
+}
+else if(use>200&&use<=400){
+basic = 1260;
+useCharge = use*166
+}
+else{
+basic = 6060;
+useCharge = use*234
+}
+
+var sumCharge
+var addedTax
+sumCharge = basic+useCharge
+addedTax = Math.floor(sumCharge/10)
+var totalCharge
+
+totalCharge = sumCharge+addedTax+360
+$("#basic").text(basic)
+$("#useCharge").text(useCharge)
+$("#sumCharge").text(sumCharge)
+$("#addedTax").text(addedTax)
+$("#totalCharge").text(totalCharge)
+
+  
+});
+</script>
 </body>
 </html>
