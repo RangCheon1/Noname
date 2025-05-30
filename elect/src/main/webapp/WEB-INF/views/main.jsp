@@ -11,9 +11,9 @@
     <h1>메인화면</h1>
 
     <div class="menu-container">
-        <a href="/logout.do" class="menu-item">
-            <img src="<c:url value='/resources/images/logout.png' />" alt="로그아웃">
-            <div>로그아웃</div>
+        <a href="/Login" class="menu-item">
+            <img src="<c:url value='/resources/images/logout.png' />" alt="로그인">
+            <div>로그인</div>
         </a>
         <a href="/bill.do" class="menu-item">
             <img src="<c:url value='/resources/images/bill.png' />" alt="전기요금표">
@@ -31,6 +31,8 @@
             <img src="<c:url value='/resources/images/proof.png' />" alt="증명서 출력">
             <div>요금납부<br/>증명서 출력</div>
         </a>
+    </div>
+    <div class="contents">
     </div>
 </body>
 </html>

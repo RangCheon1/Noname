@@ -45,7 +45,7 @@ public class SelectController {
         return "redirect:/selectCustomer.do";
     }
     
- // 전기요금 납부증명서 페이지로 이동
+    // 전기요금 납부증명서 페이지로 이동
     @GetMapping("/proof.do")
     public String showProofPage() {
         return "proof";  // /WEB-INF/views/proof.jsp로 이동
@@ -55,6 +55,5 @@ public class SelectController {
     public String showMainPage() {
         return "main"; // /WEB-INF/views/main.jsp 로 포워딩
     }
-    
     
 }
