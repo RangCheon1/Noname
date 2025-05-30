@@ -23,7 +23,7 @@
             <img src="<c:url value='/resources/images/customer.png' />" alt="고객번호 조회">
             <div>고객번호<br/>/조회</div>
         </a>
-        <a href="/inquiry.do" class="menu-item">
+        <a href="/chargecheck" class="menu-item">
             <img src="<c:url value='/resources/images/inquiry.png' />" alt="요금조회">
             <div>요금조회</div>
         </a>
