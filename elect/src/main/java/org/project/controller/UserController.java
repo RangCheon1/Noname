@@ -38,7 +38,6 @@ public class UserController {
 		// 임시로 session userno에 값 저장 시켜놓기
 		session.setAttribute("userno", 3L);
 		
-		
 		// session에 userno 값이 없을 때 페이지 이동 막아놓기
 		Object usernoObj = session.getAttribute("userno");
 
