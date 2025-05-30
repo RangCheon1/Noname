@@ -1,6 +1,8 @@
 package org.project.controller;
 
+
 import java.util.List;
+import java.lang.reflect.Field;
 import java.util.Collections;
 
 import org.project.domain.Customer;
@@ -46,10 +48,30 @@ public class SelectController {
     }
     
  // 전기요금 납부증명서 페이지로 이동
-    @GetMapping("/proof.do")
-    public String showProofPage() {
-        return "proof";  // /WEB-INF/views/proof.jsp로 이동
+    @GetMapping("/proof")
+    public String showProofPage(@RequestParam(value = "userno", required = false) Integer userno, Model model) {
+        if (userno == null) {
+            // userno 파라미터가 없으면 에러 페이지로 이동
+            return "error"; // error.jsp (오류 페이지)
+        }
+        
+        Customer customer = customerMapper.getCustomerByUserno(userno);
+        if (customer == null) {
+            // 고객이 없으면 에러 페이지로 이동
+            return "error";
+        }
+
+        int totalAmount = 0;
+        for (Integer usage : customer.getMonthlyUsage()) {
+            totalAmount += usage * 210;
+        }
+
+        model.addAttribute("customer", customer);
+        model.addAttribute("totalAmount", totalAmount);
+
+        return "proof"; // proof.jsp 로 포워딩
     }
+
     
     @RequestMapping("/main.do")
     public String showMainPage() {

@@ -32,10 +32,9 @@
 
         <%-- 정산, 추가, 삭제 버튼 모음 --%>
         <div class="action-buttons">
-            <button onclick="location.href='recalculateCustomer.do'">고객번호 정산하기</button>
-            <button onclick="location.href='addCustomer.do'">고객번호 추가</button>
+            <button onclick="location.href='addCustomer.do'">회원가입</button>
             <button onclick="location.href='main.do'">메인화면 이동</button>
-            <button onclick="location.href='proof.do'">증빙서류 확인</button>
+            <button onclick="location.href='proof.do'">증빙서류 출력</button>
         </div>
     </div>
 
