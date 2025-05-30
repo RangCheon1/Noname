@@ -1,0 +1,44 @@
+@charset "UTF-8";
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* 수직 중앙 */
+    align-items: center;     /* 수평 중앙 */
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 30px;
+}
+
+.menu-container {
+    display: flex;
+    gap: 40px;
+    justify-content: center; /* 아이템 수평 정렬 */
+    align-items: center;
+    flex-wrap: wrap;         /* 줄 바꿈 허용 (작은 화면 대응) */
+}
+
+.menu-item {
+    text-align: center;
+    text-decoration: none;
+    color: black;
+    font-size: 14px;
+    transition: transform 0.2s;
+}
+
+.menu-item img {
+    width: 64px;
+    height: 64px;
+    display: block;
+    margin: 0 auto 8px;
+}
+
+.menu-item:hover {
+    transform: scale(1.05);
+}

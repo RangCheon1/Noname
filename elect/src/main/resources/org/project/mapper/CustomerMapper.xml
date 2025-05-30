@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.project.mapper.CustomerMapper">
+
+    <select id="getAllCustomers" resultType="org.project.domain.Customer">
+        SELECT userno, name, id, password, phone, address FROM user
+    </select>
+
+    <select id="searchCustomers" parameterType="string" resultType="org.project.domain.Customer">
+        SELECT userno, name, id, password, phone, address
+        FROM user
+        WHERE CAST(userno AS CHAR) LIKE CONCAT('%', #{keyword}, '%')
+           OR name LIKE CONCAT('%', #{keyword}, '%')
+           OR id LIKE CONCAT('%', #{keyword}, '%')
+           OR phone LIKE CONCAT('%', #{keyword}, '%')
+           OR address LIKE CONCAT('%', #{keyword}, '%')
+    </select>
+
+    <delete id="deleteCustomer" parameterType="int">
+        DELETE FROM user WHERE userno = #{userno}
+    </delete>
+
+</mapper>

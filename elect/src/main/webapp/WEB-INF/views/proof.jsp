@@ -1,0 +1,85 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>전기요금 납부증명서</title>
+    <link rel="stylesheet" href="<c:url value='/resources/css/proof.css' />">
+</head>
+<body>
+<div class="wrapper">
+    <h1>전기요금 납부증명서</h1>
+
+    <section class="section">
+        <table class="info-table">
+            <tr>
+                <th>발급번호</th>
+                <td>2013 286</td>
+                <th>증명서 사용목적</th>
+                <td>세무서 제출용</td>
+            </tr>
+        </table>
+    </section>
+
+    <section class="section">
+        <h2>납부자 정보</h2>
+        <table class="info-table">
+            <tr>
+                <th>고객번호</th>
+                <td colspan="3">${customer.userno}</td>
+            </tr>
+            <tr>
+                <th>성명</th>
+                <td>${customer.name}</td>
+                <th>전화번호</th>
+                <td>${customer.phone}</td>
+            </tr>
+            <tr>
+                <th>계약종별</th>
+                <td>주택용전력</td>
+                <th>주소</th>
+                <td>${customer.address}</td>
+            </tr>
+            <tr>
+                <th>전기요금 납부금액</th>
+                <td colspan="3">${totalAmount}원</td>
+            </tr>
+        </table>
+    </section>
+
+    <section class="section">
+        <h2>전기요금 납부내역</h2>
+        <table class="bill-table">
+            <thead>
+                <tr>
+                    <th>납월별</th>
+                    <th>사용량(kWh)</th>
+                    <th>금액(원)</th>
+                    <th>수납일</th>
+                </tr>
+            </thead>
+            <tbody>
+                <c:forEach var="month" begin="1" end="12">
+                    <tr>
+                        <td>2025.${month < 10 ? '0' + month : month}</td>
+                        <td>${customer['month25_' + month]}</td>
+                        <td>
+                            <c:set var="amount" value="${customer['month25_' + month] * 210}" />
+                            ${amount}
+                        </td>
+                        <td>2025.${month < 10 ? '0' + month : month}.25</td>
+                    </tr>
+                </c:forEach>
+            </tbody>
+        </table>
+
+        <div class="button-area">
+            <button class="print-list">발급가능 프린터 목록</button>
+            <button class="print" onclick="window.print();">인쇄</button>
+        </div>
+    </section>
+</div>
+</body>
+</html>
+
