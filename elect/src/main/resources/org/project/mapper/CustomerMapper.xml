@@ -30,13 +30,13 @@
 
     <!-- 단일 고객 조회 (납부증명서용) -->
     <select id="getCustomerByUserno" parameterType="int" resultType="org.project.domain.Customer">
-    SELECT 
-        userno, name, id, password, phone, address,
-        month25_1, month25_2, month25_3, month25_4, month25_5, month25_6,
-        month25_7, month25_8, month25_9, month25_10, month25_11, month25_12
-    FROM user
-    WHERE userno = #{userno}
-</select>
+        SELECT 
+            userno, name, id, password, phone, address,
+            month25_1, month25_2, month25_3, month25_4, month25_5, month25_6,
+            month25_7, month25_8, month25_9, month25_10, month25_11, month25_12
+        FROM user
+        WHERE userno = #{userno}
+    </select>
 
     <!-- 고객 삭제 -->
     <delete id="deleteCustomer" parameterType="int">
