@@ -21,7 +21,7 @@ public class SelectController {
     @Autowired
     private CustomerMapper customerMapper;
 
-    // 처음 접속 시 목록을 보여주지 않음
+    // 처음 접속 시 목록을 보여주지 않음 
     @GetMapping("/selectCustomer.do")
     public String selectCustomer(Model model) {
         model.addAttribute("customers", Collections.emptyList());
