@@ -34,7 +34,7 @@ window.onload = function () {
 		<span>고객정보</span>
 		</th>
 		<th class="r_table">
-		---
+		
 		</th>
 	</tr>
 	<tr>
@@ -67,7 +67,7 @@ window.onload = function () {
 		<span>이번 달 검침/전기 사용량</span> <label>(단위:kWh)</label>
 		</th>
 		<th class="r_table hide_button">
-		---
+		∧
 		</th>
 	</tr>
 	<tr>
@@ -138,7 +138,7 @@ window.onload = function () {
 		<span>이번 달 예상 청구금액</span> <label>(단위:원)</label>
 		</th>
 		<th class="r_table hide_button">
-		---
+		∧
 		</th>
 	</tr>
 	<tr>
@@ -198,10 +198,10 @@ window.onload = function () {
 </div>
 <script>
 $(document).ready(function(){
-var use;
-var basic;
-var useCharge;
-const usageMap = {
+	var use;
+	var basic;
+	var useCharge;
+	const usageMap = {
         1: ${user.month25_1},
         2: ${user.month25_2},
         3: ${user.month25_3},
@@ -215,53 +215,50 @@ const usageMap = {
         11: ${user.month25_11},
         12: ${user.month25_12}
     };
-function updateCharges(month) {
-    const use = usageMap[month];
-    const prevMonth = month === 1 ? 12 : month - 1;
-    const prevUse = prevMonth ? usageMap[prevMonth] : null;
-    const startDate = prevMonth + "/18";
-	const endDate = month + "/17";
+	function updateCharges(month) {
+    	const use = usageMap[month];
+    	const prevMonth = month === 1 ? 12 : month - 1;
+    	const prevUse = prevMonth ? usageMap[prevMonth] : null;
+    	const startDate = prevMonth + "/18";
+		const endDate = month + "/17";
+		    
+    	let basic = 0;
+    	let useCharge = 0;
 	
-    
-    let basic = 0;
-    let useCharge = 0;
-	
-    
-    //요금 계산식
-    if (use <= 200) {
-        basic = 730;
-        useCharge = use * 97;
-    } else if (use <= 400) {
-        basic = 1260;
-        useCharge = use * 166;
-    } else {
-        basic = 6060;
-        useCharge = use * 234;
-    }
+	    //요금 계산식
+	    if (use <= 200) {
+        	basic = 730;
+        	useCharge = use * 97;
+    	} else if (use <= 400) {
+        	basic = 1260;
+        	useCharge = use * 166;	
+    	} else {
+	        basic = 6060;
+        	useCharge = use * 234;
+    	}
 
-    const sumCharge = basic + useCharge;
-    const addedTax = Math.floor(sumCharge / 10);
-    const totalCharge = sumCharge + addedTax + 360;
+    	const sumCharge = basic + useCharge;
+    	const addedTax = Math.floor(sumCharge / 10);
+    	const totalCharge = sumCharge + addedTax + 360;
 	
     
-    $("#usagePeriod").text(startDate + " ~ " + endDate);
-    $("#basic").text(basic);
-    $("#useCharge").text(useCharge);
-    $("#sumCharge").text(sumCharge);
-    $("#addedTax").text(addedTax);
-    $("#totalCharge").text(totalCharge);
-    
-    $(".this_month").text(use);
-    $(".prev_month").text(prevUse);
-    
-    //1월일 때 전월 사용량 숨기기
-    if (prevMonth!=12) {
-        $("#prev_usage_row").show();
-    } else {
-        $("#prev_usage_row").hide();
-    }
-}
-
+    	$("#usagePeriod").text(startDate + " ~ " + endDate);
+    	$("#basic").text(basic);
+    	$("#useCharge").text(useCharge);
+    	$("#sumCharge").text(sumCharge);
+    	$("#addedTax").text(addedTax);
+    	$("#totalCharge").text(totalCharge);
+	    
+	    $(".this_month").text(use);
+	    $(".prev_month").text(prevUse);
+	    
+    	//1월일 때 전월 사용량 숨기기
+    	if (prevMonth!=12) {
+        	$("#prev_usage_row").show();
+    	} else {
+	        $("#prev_usage_row").hide();
+	    }
+	}
 
 //이번 달이 처음에 자동으로 선택되게 하기
 	const today = new Date();
@@ -277,7 +274,26 @@ function updateCharges(month) {
     	updateCharges(selectedMonth);
 	});
 	
+	function hidetable(){
+		$(".hide_button").on("click",function(){
+			const $button = $(this);
+	        const $table = $button.closest("table");
+	        const isFolded = $table.data("folded");
 
+	        if (isFolded) {
+	            // 펼치기
+	            $table.find("tr").not(":first").find("td").slideDown(100);
+	            $button.text("∧");
+	            $table.data("folded", false);
+	        } else {
+	            // 접기
+	            $table.find("tr").not(":first").find("td").slideUp(100);
+	            $button.text("∨");
+	            $table.data("folded", true);
+	        }
+		});
+	}
+	hidetable();
 });
 </script>
 </body>

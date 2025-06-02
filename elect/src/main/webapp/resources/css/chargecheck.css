@@ -86,4 +86,9 @@
 	padding-top:10px;
 	color:#a0a0a0;
 	}
-	
+	.hide_button{
+	font-size:22pt;
+	}
+	.hide_button:hover{
+	cursor: pointer;
+	}	
