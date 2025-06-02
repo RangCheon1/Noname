@@ -213,6 +213,12 @@ window.onload = function () {
 	</tr>
 </table>
 </div>
+<div class="center-button">
+    <form action="/main.do" method="get">
+        <button type="submit">메인화면 이동</button>
+    </form>
+</div>
+
 <script>
 $(document).ready(function(){
 	var use;
@@ -268,7 +274,7 @@ $(document).ready(function(){
 	    const fcAdjustment = use*5;
 	    const sumCharge = basic + useCharge + ceCharge + fcAdjustment;
     	const fund = Math.floor(sumCharge/1000*36)
-    	const addedTax = Math.floor(sumCharge / 10);
+    	const addedTax = Math.round(sumCharge / 10);
     	const totalCharge = sumCharge + addedTax + fund;
 	
     	$("#usagePeriod").text(startDate + " ~ " + endDate);
