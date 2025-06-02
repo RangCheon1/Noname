@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <title>전기요금 납부증명서</title>
     <link rel="stylesheet" href="<c:url value='/resources/css/proof.css' />">
+        <script type="text/javascript" src="/resources/js/proof.js"></script>
 </head>
 <body>
     <h1>전기요금 납부증명서</h1>
@@ -31,7 +32,7 @@
         <table class="info-table">
             <tr><th>고객번호</th><td colspan="3">${customer.userno}</td></tr>
             <tr><th>성명</th><td>${customer.name}</td><th>전화번호</th><td>${customer.phone}</td></tr>
-            <tr><th>계약종별</th><td>주택용전력</td><th>주소</th><td>${customer.address}</td></tr>
+            <th>주소</th><td colspan="3">${customer.address}</td></tr>
             <tr><th>총전기요금 납부금액</th><td colspan="3">${totalAmount} 원</td></tr>
         </table>
     </section>
