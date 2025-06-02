@@ -74,6 +74,7 @@
 	.innerdiv{
 	height:100px;
 	width:300px;
+	/*임시 div 표시용 배경색 */
 	background-color:aquamarine;
 	position:relative;
 	display:inline-block;

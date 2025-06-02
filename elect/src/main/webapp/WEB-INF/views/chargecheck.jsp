@@ -23,6 +23,7 @@ window.onload = function () {
 </head>
 <body>
 <h1>
+<!-- 세션값 제대로 가는지 테스트(최종 구현 시 삭제) -->
 테스트: userno=${user.userno}
 테스트2: name=${user.name}
   
@@ -177,8 +178,8 @@ window.onload = function () {
 		<td class="l_table">
 		전력기금
 		</td>
-		<td class="r_table">
-		360
+		<td class="r_table" id="fund">
+		
 		</td>
 	</tr>
 	<tr class="sum">
@@ -201,6 +202,7 @@ $(document).ready(function(){
 	var use;
 	var basic;
 	var useCharge;
+	var fund;
 	const usageMap = {
         1: ${user.month25_1},
         2: ${user.month25_2},
@@ -226,26 +228,32 @@ $(document).ready(function(){
     	let useCharge = 0;
 	
 	    //요금 계산식
+	    //사용량이 200 이하일 때
 	    if (use <= 200) {
         	basic = 730;
         	useCharge = use * 97;
+        //사용량이 201이상 400이하일 때
     	} else if (use <= 400) {
         	basic = 1260;
-        	useCharge = use * 166;	
+        	useCharge = use * 166;
+        //그 이상일 때
     	} else {
 	        basic = 6060;
         	useCharge = use * 234;
     	}
 
+	    
+	    //전력 기금 = 전기 요금계의 3.6%, 부가가치세 = 전기 요금계의 10% (소숫점 버림)
     	const sumCharge = basic + useCharge;
+    	const fund = Math.floor(sumCharge/1000*36)
     	const addedTax = Math.floor(sumCharge / 10);
-    	const totalCharge = sumCharge + addedTax + 360;
+    	const totalCharge = sumCharge + addedTax + fund;
 	
-    
     	$("#usagePeriod").text(startDate + " ~ " + endDate);
     	$("#basic").text(basic);
     	$("#useCharge").text(useCharge);
     	$("#sumCharge").text(sumCharge);
+    	$("#fund").text(fund);
     	$("#addedTax").text(addedTax);
     	$("#totalCharge").text(totalCharge);
 	    
@@ -274,6 +282,7 @@ $(document).ready(function(){
     	updateCharges(selectedMonth);
 	});
 	
+	//전기 사용량, 예상 청구금액 숨기기/펼치기 버튼
 	function hidetable(){
 		$(".hide_button").on("click",function(){
 			const $button = $(this);

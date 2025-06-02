@@ -35,7 +35,7 @@ public class UserController {
 	@GetMapping("/chargecheck")
 	public String view(HttpSession session, Model model) {
 		
-		// 임시로 session userno에 값 저장 시켜놓기
+		// 임시로 session userno에 값 저장 시켜놓기 (로그인 구현 후 삭제)
 		session.setAttribute("userno", 3L);
 		
 		// session에 userno 값이 없을 때 페이지 이동 막아놓기
