@@ -8,31 +8,30 @@
     <link rel="stylesheet" href="<c:url value='/resources/css/main.css' />">
 </head>
 <body>
-    <h1>메인화면</h1>
+<h1>메인화면</h1>
 
-    <div class="menu-container">
-        <a href="/Login" class="menu-item">
-            <img src="<c:url value='/resources/images/logout.png' />" alt="로그인">
-            <div>로그인</div>
-        </a>
-        <a href="/bill.do" class="menu-item">
-            <img src="<c:url value='/resources/images/bill.png' />" alt="전기요금표">
-            <div>전기요금표</div>
-        </a>
-        <a href="/selectCustomer.do" class="menu-item">
-            <img src="<c:url value='/resources/images/customer.png' />" alt="고객번호 조회">
-            <div>고객번호<br/>/조회</div>
-        </a>
-        <a href="/chargecheck" class="menu-item">
-            <img src="<c:url value='/resources/images/inquiry.png' />" alt="요금조회">
-            <div>요금조회</div>
-        </a>
-        <a href="/proof.do" class="menu-item">
-            <img src="<c:url value='/resources/images/proof.png' />" alt="증명서 출력">
-            <div>요금납부<br/>증명서 출력</div>
-        </a>
-    </div>
-    <div class="contents">
-    </div>
+<div class="menu-container">
+    <a href="/Login" class="menu-item">
+        <div class="menu-icon">L</div>
+        <div>로그아웃</div>
+    </a>
+    <a href="/electric_fee.do" class="menu-item">
+        <div class="menu-icon">E</div>
+        <div>전기요금표</div>
+    </a>
+    <a href="/selectCustomer.do" class="menu-item">
+        <div class="menu-icon">C</div>
+        <div>고객번호<br/>/조회</div>
+    </a>
+    <a href="/chargecheck" class="menu-item">
+        <div class="menu-icon">Q</div>
+        <div>요금조회</div>
+    </a>
+    <a href="/proof.do" class="menu-item">
+        <div class="menu-icon">P</div>
+        <div>요금납부<br/>증명서 출력</div>
+    </a>
+</div>
 </body>
 </html>
+

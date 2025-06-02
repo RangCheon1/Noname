@@ -31,6 +31,21 @@
 	padding:0 15pt;
 	height:40px;
 	}
+	tr .select1{
+	border:none;
+	font-size:12px;
+	font-weight:bold;
+	height:20px;
+	}
+	tr .select2{
+	border:none;
+	height:20px;
+	}
+	select{
+	border: none; /* 테두리 제거 */
+  	width:700px;
+  	background-color:#f8f9fa;
+	}
 	.l_table{
 	text-align: left;
 	font-size:10pt;
@@ -71,3 +86,4 @@
 	padding-top:10px;
 	color:#a0a0a0;
 	}
+	

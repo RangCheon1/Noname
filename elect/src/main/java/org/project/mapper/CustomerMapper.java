@@ -8,4 +8,5 @@ public interface CustomerMapper {
     List<Customer> getAllCustomers();
     List<Customer> searchCustomers(String keyword);
     void deleteCustomer(int userno);
+    Customer getCustomerByUserno(int userno);
 }
