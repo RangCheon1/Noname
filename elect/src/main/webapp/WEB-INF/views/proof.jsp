@@ -13,11 +13,16 @@
     <section class="section">
         <table class="info-table">
             <tr>
-                <th>발급번호</th>
-                <td>2013 286</td>
-                <th>증명서 사용목적</th>
-                <td>세무서 제출용</td>
-            </tr>
+    			<th>발급번호</th>
+    				<td>2013 286</td>
+    			<th>증명서 사용목적</th>
+    				<td>
+        				<select id="purposeSelect" onchange="updatePurposeText()">
+            				<option value="세무서 제출용">세무서 제출용</option>
+            				<option value="개인 지참용">개인 지참용</option>
+        			</select>
+    			</td>
+			</tr>
         </table>
     </section>
 

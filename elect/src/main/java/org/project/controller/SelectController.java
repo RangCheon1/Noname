@@ -29,7 +29,6 @@ public class SelectController {
     public String searchCustomer(@RequestParam("keyword") String keyword, Model model) {
         if (keyword == null || keyword.trim().isEmpty()) {
             model.addAttribute("customers", Collections.emptyList());
-            model.addAttribute("message", "검색어를 입력해주세요.");
             return "select";
         }
 

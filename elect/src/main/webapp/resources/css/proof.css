@@ -96,3 +96,12 @@ h2 {
     opacity: 0.9;
 }
 
+@media print {
+    select {
+        display: none;
+    }
+    .print-purpose {
+        display: inline;
+        font-weight: bold;
+    }
+}

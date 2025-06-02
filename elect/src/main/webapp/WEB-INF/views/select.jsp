@@ -8,6 +8,7 @@
     <meta charset="UTF-8">
     <title>고객번호 선택</title>
     <link rel="stylesheet" href="<c:url value='/resources/css/select.css' />">
+    <script type="text/javascript" src="/resources/js/select.js"></script>
 </head>
 <body>
 <div class="container">
@@ -22,7 +23,7 @@
 
         <form class="search-form" method="get" action="searchCustomer.do">
             <input type="text" name="keyword" placeholder="고객번호, 성명, 주소, 별명 검색" />
-            <button type="submit">🔍</button>
+            <button type="submit" onclick="return validateSearch()">🔍</button>
         </form>
 
         <div class="action-buttons">
@@ -61,7 +62,9 @@
                             <%-- 조회 취소 버튼 (폼 제출) --%>
                         <form method="get" action="selectCustomer.do" class="delete-form">
                             <button type="submit" class="action-button">조회 취소</button>
+                        </form>
                         </div>
+                        
                     </div>
                 </c:forEach>
             </c:otherwise>
