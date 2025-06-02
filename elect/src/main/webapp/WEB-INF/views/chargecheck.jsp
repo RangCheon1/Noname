@@ -66,7 +66,7 @@ window.onload = function () {
 		<th class="l_table">
 		<span>이번 달 검침/전기 사용량</span> <label>(단위:kWh)</label>
 		</th>
-		<th class="r_table">
+		<th class="r_table hide_button">
 		---
 		</th>
 	</tr>
@@ -137,7 +137,7 @@ window.onload = function () {
 		<th class="l_table">
 		<span>이번 달 예상 청구금액</span> <label>(단위:원)</label>
 		</th>
-		<th class="r_table">
+		<th class="r_table hide_button">
 		---
 		</th>
 	</tr>
@@ -276,6 +276,7 @@ function updateCharges(month) {
     	const selectedMonth = parseInt($(this).val());
     	updateCharges(selectedMonth);
 	});
+	
 
 });
 </script>
