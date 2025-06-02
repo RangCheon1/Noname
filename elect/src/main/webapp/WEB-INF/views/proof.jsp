@@ -56,8 +56,9 @@
             </tbody>
         </table>
         <div class="button-area">
-            <button onclick="window.print();">인쇄</button>
-        </div>
+    		<button class="print" onclick="window.print();">인쇄</button>
+    		<button class="print-list" onclick="location.href='main.do'">메인페이지 이동</button>
+		</div>
     </section>
 </body>
 </html>

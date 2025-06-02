@@ -51,22 +51,25 @@ public class SelectController {
 
     // 4. 전기요금 납부증명서 페이지로 이동
     @GetMapping("/proof.do")
-    public String showProofPage(@RequestParam("userno") int userno, Model model) {
-        Customer customer = customerMapper.getCustomerByUserno(userno);
-
-        if (customer == null) {
-            model.addAttribute("message", "해당 고객을 찾을 수 없습니다.");
-            return "error";  // error.jsp
+    public String showProofPage(@RequestParam(value = "userno", required = false) Integer userno, Model model) {
+        if (userno == null) {
+            model.addAttribute("message", "고객번호가 누락되었습니다.");
+            return "error";
         }
 
-        // 월별 사용량 합산 및 요금 계산
+        Customer customer = customerMapper.getCustomerByUserno(userno);
+        if (customer == null) {
+            model.addAttribute("message", "해당 고객을 찾을 수 없습니다.");
+            return "error";
+        }
+
         int totalAmount = Arrays.stream(customer.getMonthlyUsage())
                                 .map(usage -> usage * 210)
                                 .sum();
 
         model.addAttribute("customer", customer);
         model.addAttribute("totalAmount", totalAmount);
-        return "proof";  // proof.jsp
+        return "proof";
     }
 
     // 5. 메인 페이지
