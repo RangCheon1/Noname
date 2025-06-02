@@ -93,3 +93,22 @@
 	.hide_button:hover{
 	cursor: pointer;
 	}	
+	
+	.center-button {
+   	display: flex;
+    justify-content: center;
+    align-items: center;
+   	margin-top: 30px;
+	}
+	.center-button button {
+   	padding: 10px 20px;
+    font-size: 16px;
+    background-color: #0056b3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+	}
+	.center-button button:hover {
+   	background-color: #003d80;
+	}
