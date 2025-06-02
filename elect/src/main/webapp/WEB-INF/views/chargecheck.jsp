@@ -168,6 +168,22 @@ window.onload = function () {
 	</tr>
 	<tr>
 		<td class="l_table">
+		&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp기후환경요금
+		</td>
+		<td class="r_table" id="CE_charge">
+		
+		</td>
+	</tr>
+	<tr>
+		<td class="l_table">
+		&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp연료비조정요금
+		</td>
+		<td class="r_table" id="FC_adjustment">
+		
+		</td>
+	</tr>
+	<tr>
+		<td class="l_table">
 		부가 가치세
 		</td>
 		<td class="r_table" id="addedTax">
@@ -203,6 +219,9 @@ $(document).ready(function(){
 	var basic;
 	var useCharge;
 	var fund;
+	var ceCharge;
+	var fcAdjustment;
+	
 	const usageMap = {
         1: ${user.month25_1},
         2: ${user.month25_2},
@@ -244,7 +263,10 @@ $(document).ready(function(){
 
 	    
 	    //전력 기금 = 전기 요금계의 3.6%, 부가가치세 = 전기 요금계의 10% (소숫점 버림)
-    	const sumCharge = basic + useCharge;
+	    //기후환경요금 = 사용량*7.3, 연료비조정요금 = 사용량*5
+	    const ceCharge = Math.floor(use/10*73);
+	    const fcAdjustment = use*5;
+	    const sumCharge = basic + useCharge + ceCharge + fcAdjustment;
     	const fund = Math.floor(sumCharge/1000*36)
     	const addedTax = Math.floor(sumCharge / 10);
     	const totalCharge = sumCharge + addedTax + fund;
@@ -253,6 +275,8 @@ $(document).ready(function(){
     	$("#basic").text(basic);
     	$("#useCharge").text(useCharge);
     	$("#sumCharge").text(sumCharge);
+    	$("#CE_charge").text(ceCharge);
+    	$("#FC_adjustment").text(fcAdjustment);
     	$("#fund").text(fund);
     	$("#addedTax").text(addedTax);
     	$("#totalCharge").text(totalCharge);
