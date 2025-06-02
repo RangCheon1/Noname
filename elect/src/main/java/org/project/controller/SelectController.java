@@ -78,5 +78,10 @@ public class SelectController {
         return "main"; // /WEB-INF/views/main.jsp 로 포워딩
     }
     
+    @RequestMapping("/electric_fee.do")
+    public String showElectricFee() {
+        return "electric_fee"; // => /WEB-INF/views/electric_fee.jsp
+    }
+    
     
 }

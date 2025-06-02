@@ -32,7 +32,6 @@
 
         <%-- 정산, 추가, 삭제 버튼 모음 --%>
         <div class="action-buttons">
-            <button onclick="location.href='addCustomer.do'">회원가입</button>
             <button onclick="location.href='main.do'">메인화면 이동</button>
             <button onclick="location.href='proof.do'">증빙서류 출력</button>
         </div>
