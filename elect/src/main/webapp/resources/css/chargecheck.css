@@ -22,6 +22,15 @@
 	padding:20px;
 	margin:auto;
 	}
+	#graph{
+	width:800px;
+	border-spacing:0;
+	border:1px solid #cccccc;
+	border-radius:30px;
+	padding:20px;
+	margin:auto;
+	box-sizing:border-box;
+	}
 	tr th{
 	border-bottom:2px solid black;
 	padding-bottom:10px;
